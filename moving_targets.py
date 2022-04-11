@@ -6,17 +6,20 @@ def shoot(index, value):
     else:
         targets_list[index] = current_target
 
+
 def add(index, value):
     if len(targets_list) > index >= 0:
         targets_list.insert(index, value)
     else:
         print("Invalid placement!")
 
+
 def strike(index, radius):
     if index - radius >= 0 and index + radius < len(targets_list):
         del targets_list[(index - radius):(index + radius) + 1]
     else:
         print("Strike missed!")
+
 
 target = input().split(' ')
 targets_list = list(map(int, target))
@@ -30,13 +33,12 @@ while command != "End":
     index = int(command[1])
     value = int(command[2])
 
-    if action == "Shoot" and index >=0 and index < len(targets_list):
+    if action == "Shoot" and len(targets_list) > index >= 0:
         shoot(index, value)
     elif action == "Add":
         add(index, value)
     elif action == "Strike":
         strike(index, value)
-
 
     command = input()
 
